@@ -1,0 +1,37 @@
+/* Write your styles */
+
+.am-topbar-brand {
+  width: 260px;
+  text-align: center;
+}
+#topbar-collapse {
+  margin-left: 260px;
+}
+.admin-sidebar-list>li>a {
+  border-left: 8px solid #fff;
+}
+.admin-sidebar-list>li>a:hover {
+  border-left-color: #0e90d2
+}
+.admin-sidebar-list>li>ul>li{
+  border-left: 8px solid #fff;
+}
+.admin-sidebar-list>li>ul>li:hover {
+  border-left-color: #0e90d2
+}
+.am-form-group>label>small{
+  padding: 1.6rem;
+  color: #999999;
+}
+.am-form-group>label>small::before{
+  content: "( ";
+}
+.am-form-group>label>small::after{
+  content: " )";
+}
+.am-datatable-filter{
+	float: right;
+}
+.am-pagination{
+	margin: 0;
+}
