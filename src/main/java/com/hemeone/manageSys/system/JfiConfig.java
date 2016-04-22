@@ -10,6 +10,7 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.ActionReporter;
 import com.jfinal.core.Const;
+import com.jfinal.core.JFinal;
 import com.jfinal.ext.route.AutoBindRoutes;
 import com.jfinal.ext2.kit.PageViewKit;
 import com.jfinal.ext2.plugin.druid.DruidEncryptPlugin;
@@ -46,9 +47,9 @@ public class JfiConfig extends JFinalConfig { // JFinalConfigExt{
 	}  
 	
 	public void configRoute(Routes me) { 
-		me.add(new FrontRoutes());
+		
 		me.add(new AutoBindRoutes());
-		//me.add(new AdminRoutes());
+		//me.add(new FrontRoutes());
 	}  
 	
 	//插件配置
