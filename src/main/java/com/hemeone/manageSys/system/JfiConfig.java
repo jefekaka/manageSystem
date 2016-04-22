@@ -1,8 +1,7 @@
 package com.hemeone.manageSys.system;
 
-import javax.sql.DataSource;
-
-import com.hemeone.manageSys.controller.UserController;
+import com.hemeone.manageSys.jfinal.AdminRoutes;
+import com.hemeone.manageSys.jfinal.FrontRoutes;
 import com.hemeone.manageSys.kit.DataSourcesKit;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
@@ -12,7 +11,6 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.ext2.plugin.druid.DruidEncryptPlugin;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
-import com.jfinal.plugin.c3p0.C3p0Plugin;
 
 
 public class JfiConfig extends JFinalConfig{
@@ -28,7 +26,8 @@ public class JfiConfig extends JFinalConfig{
 	}  
 	
 	public void configRoute(Routes me) { 
-		me.add("/user", UserController.class);
+		me.add(new FrontRoutes());
+		//me.add(new AdminRoutes());
 	}  
 	
 	//插件配置
@@ -38,10 +37,14 @@ public class JfiConfig extends JFinalConfig{
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(drp);
 		me.add(arp);
 		
-		//arp.addMapping("role", Role.class);
-		//arp.addMapping("user", User.class);
-		//arp.addMapping("comment", Comment.class);
-		//arp.addMapping("weibo", Weibo.class);
+		//用Generate生成器  根据数据库中的表映射生成对应的model   里面应该会记录model 和 table 的对应关系  待测试
+		//容器对model类的加载  是否已加载到容器中  
+		DataSourcesKit.gerneratorModel(drp.getDataSource());
+		
+		/*arp.addMapping("role", Role.class);
+		arp.addMapping("user", User.class);
+		arp.addMapping("comment", Comment.class);
+		arp.addMapping("weibo", Weibo.class);*/
 		
 		
 		

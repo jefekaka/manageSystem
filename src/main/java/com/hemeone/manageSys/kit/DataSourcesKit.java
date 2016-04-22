@@ -26,7 +26,7 @@ public class DataSourcesKit {
     }
 
     /**
-     * 获取数据源
+     * 获取数据源数据库名称
      * 
      * @return
      */
@@ -64,6 +64,7 @@ public class DataSourcesKit {
         WallFilter wall = new WallFilter();
         wall.setDbType(ds);
         dp.addFilter(wall);			//添加WallFilter  拦截器
+        dp.start();					//是否需要自身开启数据源
         return dp;
     }
 
@@ -95,9 +96,9 @@ public class DataSourcesKit {
      * 本地调用方法  用于生成model
      * @param args
      */
-    public static void main(String[] args) {
+    public static void gerneratorModel(DataSource ds) {
     	//System.out.println(com.alibaba.druid.filter.config.ConfigTools.encrypt(""));
-        loadPropertyFile();
+        //loadPropertyFile();
         // base model 所使用的包名
         String baseModelPackageName = getProperty("ge.base.model.package");
         boolean isMaven = getPropertyToBoolean("ge.maven", false);
@@ -107,12 +108,10 @@ public class DataSourcesKit {
         // base model 文件保存路径
         String baseModelOutputDir = outDir;
         
-        
         // model 所使用的包名 (MappingKit 默认使用的包名)
         String modelPackageName = getProperty("ge.model.package");
         // model 文件保存路径 (MappingKit 与 DataDictionary 文件默认保存路径)
         String modelOutputDir = baseModelOutputDir + "/..";
-        DataSource ds = (DataSource) getDataSource();
         // 创建生成器
         Generator gernerator = new Generator(ds, baseModelPackageName, baseModelOutputDir, modelPackageName,
                 modelOutputDir);
@@ -128,6 +127,10 @@ public class DataSourcesKit {
             gernerator.setRemovedTableNamePrefixes(getProperty("ge.prefixes").split(","));
         // 生成
         gernerator.generate();
+	}
     
+    public static void main(String[] args) {
+    	DruidEncryptPlugin drp = getDataSource();
+    	gerneratorModel(drp.getDataSource());
 	}
 }
