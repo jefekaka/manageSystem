@@ -8,7 +8,7 @@ public class FrontRoutes extends Routes{
 	@Override
 	public void config() {
 		// TODO Auto-generated method stub
-		add("/", UserController.class); 
+		add("/aa", UserController.class); 
 	}
 
 }

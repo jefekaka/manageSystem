@@ -13,9 +13,9 @@
 #-----------------------------------------------------------------#
 db.ds = mysql //配置数据源,目前主要测试了 mysql,oracle 没有经过测试,使用者自行测试。db.ds 数据格式,比如使用了 mysql和 oracle,那么 db.ds = mysql,oracle。注意使用英文输入下的","。以下说明均以 db.ds = mysql 进行说明;
 db.mysql.active = false //是否激活数据源,命名规范为->db.数据源名称.active,比如 db.mysql.active,db.oracle.active。
-db.mysql.url = jdbc:mysql://218.244.151.3:3306/xuanhangDB?useUnicode=true&characterEncoding=utf-8 //数据库 url,命名规范->db.数据源名.url,比如 db.mysql.url,db.oracle.url。 
+db.mysql.url = 127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8 //数据库 url,命名规范->db.数据源名.url,比如 db.mysql.url,db.oracle.url。 
 db.mysql.user = xuanhangDB //数据库用户,命名规范->db.数据源名.user,比如db.mysql.user,db.oracle.user。
-db.mysql.password = XuanHUangPWd0928 //数据库(已经加密)密码,命名规范->db.数据源名.password,比如 db.mysql.password,db.oracle.password。
+db.mysql.password = brW4Fq8Z9eiWpM1+0zcvgrkqX+b/FQq0P71dDxF3FxoqX7KINU2JTTqgru0UOr3Pp9rsPFqTbZvBUwnIbjR9jA== //数据库(已经加密)密码,命名规范->db.数据源名.password,比如 db.mysql.password,db.oracle.password。
 db.mysql.initsize = 6 //数据库连接池初始大小,命名规范->db.数据源名.initsize,比如 db.mysql.initsize,db.oracle.initsize。
 db.mysql.maxactive = 100 //数据库连接池最大激活数,命名规范->db.数据源名.maxactive,比如 db.mysql.maxactive,db.oracle.maxactive。
 db.showsql = true //是否显示 sql
@@ -42,6 +42,7 @@ ge.model.package=com.hemeone
 # 4. app.name: app's name;
 #-----------------------------------------------------------------#
 app.dev = true
-app.upload.basedir = /var/uploads //上传文件的存储路径,最后的文件路径为:/var/uploads/app.name/xxxx,也就是/var/uploads/app 的名称/xxx。
-app.post = true //是否全部使用 post 方式。注意哦!!!这里设置了true 的话,你的 Controller 的 Action在浏览器上访问会404哦。
-app.name = 
+app.uploads.basedir = /var/uploads 			//上传文件的存储路径,最后的文件路径为:/var/uploads/app.name/xxxx,也就是/var/uploads/app 的名称/xxx。
+app.downloads.basedir = /var/downloads
+app.post = false
+app.name = no

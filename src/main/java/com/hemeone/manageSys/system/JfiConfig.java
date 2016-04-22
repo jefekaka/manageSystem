@@ -1,6 +1,5 @@
 package com.hemeone.manageSys.system;
 
-import com.hemeone.manageSys.jfinal.AdminRoutes;
 import com.hemeone.manageSys.jfinal.FrontRoutes;
 import com.hemeone.manageSys.kit.DataSourcesKit;
 import com.jfinal.config.Constants;
@@ -12,14 +11,18 @@ import com.jfinal.config.Routes;
 import com.jfinal.ext2.plugin.druid.DruidEncryptPlugin;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 
-
-public class JfiConfig extends JFinalConfig{
+/**
+ * final的配置类  继承JFinalConfig     
+ * 也可以继承JFinalConfigExt的扩张类   已实现数据源的读取和其他model的生成好像 但是有点问题
+ * @author liwb
+ *
+ */
+public class JfiConfig extends JFinalConfig { // JFinalConfigExt{
 	
 	public void afterJFinalStart(){
 		//JFinal.start("WebRoot", 8080, "/", 5);
 	};
 
-	
 	//设置常量类的
 	public void configConstant(Constants me) {   
 		me.setDevMode(true);
@@ -32,6 +35,7 @@ public class JfiConfig extends JFinalConfig{
 	
 	//插件配置
 	public void configPlugin(Plugins me) {
+	
 		DruidEncryptPlugin drp = DataSourcesKit.getDataSource();		//获取Property的数据源   生成DruidEncryptPlugin
 		me.add(drp);
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(drp);
@@ -61,5 +65,54 @@ public class JfiConfig extends JFinalConfig{
 	}  
 	
 	//处理器
-	public void configHandler(Handlers me) {} 
+	public void configHandler(Handlers me) {}
+
+
+	/*@Override
+	public void configMoreConstants(Constants me) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void configMoreRoutes(Routes me) {
+		// TODO Auto-generated method stub
+		me.add(new FrontRoutes());
+	}
+
+
+	@Override
+	public void configMorePlugins(Plugins me) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void configTablesMapping(String configName, ActiveRecordPlugin arp) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void configMoreInterceptors(Interceptors me) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void configMoreHandlers(Handlers me) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void afterJFinalStarted() {
+		// TODO Auto-generated method stub
+		
+	} */
 }
