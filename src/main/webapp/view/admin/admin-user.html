@@ -1,0 +1,130 @@
+<#import "/public/static/layout.html" as layout> <#macro javascript>
+<!-- 在这里写javascript -->
+<script src="/public/static/js/amazeui.datatables.min.js"></script>
+<script type="text/javascript">
+	(function($) {
+		'use strict';
+		$(function() {
+			$("table.admin-datatable").DataTable();
+			$('.am-datatable select').selected({
+				"btnWidth" : "auto",
+				"btnSize" : "xs"
+			});
+		});
+	})(jQuery);
+</script>
+</#macro> <#assign javascript = javascript in layout /> <#macro css>
+<!-- 在这里写css -->
+</#macro> <#assign css = css in layout /> <@layout.page>
+<!-- 在这里写正文 -->
+<div class="am-cf am-padding">
+	<div class="am-fl am-cf">
+		<strong class="am-text-primary am-text-lg">用户管理</strong> /
+	</div>
+	<button type="button" class="am-btn am-btn-primary am-btn-xs am-fr">添加用户</button>
+</div>
+<hr data-am-widget="divider" style=""
+	class="am-divider am-divider-default" />
+<div class="am-padding">
+	<table
+		class="am-table am-table-striped am-table-bordered am-table-compact admin-datatable"
+		id="exampleTable">
+		<thead>
+			<tr>
+				<th>Rendering engine</th>
+				<th>Browser</th>
+				<th>Platform(s)</th>
+				<th>Engine version</th>
+				<th>Grade</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="odd gradeX">
+				<td>Trident</td>
+				<td>Internet Explorer 4.0</td>
+				<td>Win 95+</td>
+				<td class="center">4</td>
+				<td class="center">X</td>
+			</tr>
+			<tr class="even gradeC">
+				<td>Trident</td>
+				<td>Internet Explorer 5.0</td>
+				<td>Win 95+</td>
+				<td class="center">5</td>
+				<td class="center">C</td>
+			</tr>
+			<tr class="odd gradeX">
+				<td>Trident</td>
+				<td>Internet Explorer 4.0</td>
+				<td>Win 95+</td>
+				<td class="center">4</td>
+				<td class="center">X</td>
+			</tr>
+			<tr class="even gradeC">
+				<td>Trident</td>
+				<td>Internet Explorer 5.0</td>
+				<td>Win 95+</td>
+				<td class="center">5</td>
+				<td class="center">C</td>
+			</tr>
+			<tr class="odd gradeX">
+				<td>Trident</td>
+				<td>Internet Explorer 4.0</td>
+				<td>Win 95+</td>
+				<td class="center">4</td>
+				<td class="center">X</td>
+			</tr>
+			<tr class="even gradeC">
+				<td>Trident</td>
+				<td>Internet Explorer 5.0</td>
+				<td>Win 95+</td>
+				<td class="center">5</td>
+				<td class="center">C</td>
+			</tr>
+			<tr class="odd gradeX">
+				<td>Trident</td>
+				<td>Internet Explorer 4.0</td>
+				<td>Win 95+</td>
+				<td class="center">4</td>
+				<td class="center">X</td>
+			</tr>
+			<tr class="even gradeC">
+				<td>Trident</td>
+				<td>Internet Explorer 5.0</td>
+				<td>Win 95+</td>
+				<td class="center">5</td>
+				<td class="center">C</td>
+			</tr>
+			<tr class="odd gradeX">
+				<td>Trident</td>
+				<td>Internet Explorer 4.0</td>
+				<td>Win 95+</td>
+				<td class="center">4</td>
+				<td class="center">X</td>
+			</tr>
+			<tr class="even gradeC">
+				<td>Trident</td>
+				<td>Internet Explorer 5.0</td>
+				<td>Win 95+</td>
+				<td class="center">5</td>
+				<td class="center">C</td>
+			</tr>
+			<tr class="odd gradeX">
+				<td>Trident</td>
+				<td>Internet Explorer 4.0</td>
+				<td>Win 95+</td>
+				<td class="center">4</td>
+				<td class="center">X</td>
+			</tr>
+			<tr class="even gradeC">
+				<td>Trident</td>
+				<td>Internet Explorer 5.0</td>
+				<td>Win 95+</td>
+				<td class="center">5</td>
+				<td class="center">C</td>
+			</tr>
+			<!-- more data -->
+		</tbody>
+	</table>
+</div>
+</@layout.page>

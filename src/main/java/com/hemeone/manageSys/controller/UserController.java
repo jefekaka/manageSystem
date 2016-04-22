@@ -6,8 +6,8 @@ import com.jfinal.plugin.activerecord.Record;
 
 public class UserController extends Controller {
     public void index() {
-    	Record r = Db.findById("user", 1);
-        renderJson(r);
+    	setAttr("title", "首页");
+        render("login.html");
     }
 
     public void user() {

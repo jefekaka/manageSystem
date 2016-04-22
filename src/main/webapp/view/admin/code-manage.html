@@ -1,0 +1,205 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JLook 后台管理平台</title>
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="icon" type="image/png" href="assets/i/favicon.png">
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="apple-touch-icon-precomposed"
+	href="assets/i/app-icon72x72@2x.png">
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage"
+	content="assets/i/app-icon72x72@2x.png">
+<meta name="msapplication-TileColor" content="#0e90d2">
+<link rel="shortcut icon" href="/public/static/images/favicon.png"
+	type="image/png" />
+<link rel="stylesheet" href="/public/static/css/amazeui.min.css">
+<link rel="stylesheet" href="/public/static/css/admin.css">
+<link rel="stylesheet" href="/public/static/css/app.css">
+<link rel="stylesheet"
+	href="/public/static/css/amazeui.datatables.min.css" />
+</head>
+
+<body>
+	<!--[if lte IE 9]>
+  <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>以获得更好的体验！</p>
+  <![endif]-->
+	<!--在这里编写你的代码-->
+
+	<header class="am-topbar admin-header ">
+		<div class="am-topbar-brand">
+			<a href="#"><strong>J<font color=red>Look</font></strong> 后台管理平台</a>
+		</div>
+		<div id="topbar-collapse" class="am-collapse am-topbar-collapse">
+			<ul class="am-nav am-nav-pills am-topbar-nav am-hide">
+				<li class="am-active"><a href="#">首页</a></li>
+				<li><a href="#">用户</a></li>
+				<li><a href="#">系统</a></li>
+			</ul>
+			<ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right">
+				<li class="am-dropdown" data-am-dropdown=""><a
+					class="am-dropdown-toggle" data-am-dropdown-toggle=""
+					href="javascript:;"> <span class="am-icon-users"></span> 管理员 <span
+						class="am-icon-caret-down"></span>
+				</a>
+					<ul class="am-dropdown-content">
+						<li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+						<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+						<li><a href="#"><span class="am-icon-power-off"></span>
+								退出</a></li>
+					</ul></li>
+				<li class="am-hide-sm-only"><a href="javascript:;"
+					id="admin-fullscreen"><span class="am-icon-arrows-alt"></span>
+						<span class="admin-fullText">开启全屏</span></a></li>
+			</ul>
+		</div>
+	</header>
+	<div class="am-cf admin-main">
+		<!-- sidebar start -->
+		<div class="admin-sidebar am-offcanvas">
+			<ul class="am-list admin-sidebar-list" id="collapase-nav">
+				<li class="am-panel"><a href="admin-index.html"
+					data-am-collapse="{parent: '#collapase-nav'}"><span
+						class="am-icon-home am-icon-fw am-icon-sm"></span> 首页</a></li>
+				<li class="admin-parent am-panel"><a class="am-cf"
+					data-am-collapse="{parent:'#collapase-nav',target:'#collapse-nav'}"><span
+						class="am-icon-file am-icon-fw"></span> 页面模块 <span
+						class="am-icon-angle-right am-fr am-margin-right"></span></a>
+					<ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav">
+						<li><a href="admin-user.html" class="am-cf"><span
+								class="am-icon-check"></span> 个人资料<span
+								class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+						<li><a href="admin-help.html"><span
+								class="am-icon-puzzle-piece"></span> 帮助页</a></li>
+						<li><a href="admin-gallery.html"><span class="am-icon-th"></span>
+								相册页面<span
+								class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
+						<li><a href="admin-log.html"><span
+								class="am-icon-calendar"></span> 系统日志</a></li>
+						<li><a href="admin-404.html"><span class="am-icon-bug"></span>
+								404</a></li>
+					</ul></li>
+				<li class="am-panel"><a href="admin-table.html"
+					data-am-collapse="{parent: '#collapase-nav'}"><span
+						class="am-icon-table am-icon-fw"></span> 表格</a></li>
+				<li class="am-panel"><a href="admin-form.html"
+					data-am-collapse="{parent: '#collapase-nav'}"><span
+						class="am-icon-pencil-square-o am-icon-fw"></span> 表单</a></li>
+				<li class="admin-parent am-panel"><a class="am-cf"
+					data-am-collapse="{parent:'#collapase-nav',target:'#user-nav'}"><span
+						class="am-icon-users am-icon-fw"></span> 用户管理 <span
+						class="am-icon-angle-right am-fr am-margin-right"></span></a>
+					<ul class="am-list am-collapse admin-sidebar-sub" id="user-nav">
+						<li><a href="admin-user.html" class="am-cf">用户管理</a></li>
+						<li><a href="admin-user.html" class="am-cf">权限系统</a></li>
+						<li><a href="admin-user.html" class="am-cf">行为管理</a></li>
+					</ul></li>
+				<li class="admin-parent am-panel"><a class="am-cf"
+					data-am-collapse="{parent:'#collapase-nav',target:'#system-nav'}"><span
+						class="am-icon-cog am-icon-sm am-icon-fw"></span> 系统管理 <span
+						class="am-icon-angle-right am-fr am-margin-right"></span></a>
+					<ul class="am-list am-collapse admin-sidebar-sub am-in"
+						id="system-nav">
+						<li><a href="admin-user.html" class="am-cf">网站设置</a></li>
+						<li><a href="admin-user.html" class="am-cf">菜单管理</a></li>
+						<li><a href="admin-user.html" class="am-cf">配置管理</a></li>
+					</ul></li>
+				<li class="am-panel"><a href="login.html"><span
+						class="am-icon-sign-out am-icon-fw am-icon-sm"></span> 注销</a></li>
+			</ul>
+		</div>
+		<!-- sidebar end -->
+		<!-- content start -->
+		<div class="admin-content">
+			<div class="am-cf am-padding">
+				<div class="am-fl am-cf">
+					<strong class="am-text-primary am-text-lg">配置管理</strong> /
+				</div>
+				<button type="button" class="am-btn am-btn-primary am-btn-xs am-fr">添加</button>
+			</div>
+			<hr data-am-widget="divider" style=""
+				class="am-divider am-divider-default" />
+			<div class="am-padding">
+				<table
+					class="am-table am-table-striped am-table-bordered am-table-compact admin-datatable">
+					<thead>
+						<tr>
+							<th width="50px">ID</th>
+							<th width="300px">名称</th>
+							<th>标题</th>
+							<th width="100px">类型</th>
+							<th width="180px">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>WEB_SEIT_TITLE</td>
+							<td>网站标题</td>
+							<td class="center">字符</td>
+							<td class="center"><a
+								class="am-btn am-btn-secondary am-btn-xs"
+								href="code-manage-edit.html">编辑</a>
+								<button type="button" class="am-btn am-btn-danger am-btn-xs">删除</button>
+							</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>WEB_SEIT_CLOSE</td>
+							<td>关闭站点</td>
+							<td class="center">布尔值</td>
+							<td class="center">
+								<button type="button" class="am-btn am-btn-secondary am-btn-xs">编辑</button>
+								<button type="button" class="am-btn am-btn-danger am-btn-xs">删除</button>
+							</td>
+						</tr>
+						<!-- more data -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- content end -->
+	</div>
+
+
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="/public/static/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<!--[if lte IE 8 ]>
+  <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+  <script src="/public/static/js/amazeui.ie8polyfill.min.js"></script>
+  <![endif]-->
+	<script src="/public/static/js/amazeui.min.js"></script>
+	<script src="/public/static/js/amazeui.datatables.min.js"></script>
+	<script src="/public/static/js/app.js"></script>
+	<script type="text/javascript">
+		(function($) {
+			'use strict';
+			$(function() {
+				$("table.admin-datatable").DataTable();
+				$('.am-datatable select').selected({
+					"btnWidth" : "auto",
+					"btnSize" : "xs"
+				});
+			});
+		})(jQuery);
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<#import "/public/static/layout.html" as layout> <#macro javascript>
+<!-- 在这里写javascript -->
+
+</#macro> <#assign javascript = javascript in layout /> <#macro css>
+<!-- 在这里写css -->
+</#macro> <#assign css = css in layout /> <#macro page data> <#assign
+pageSizes=[10,25,50,100]>
+<div class="am-padding">
+	<div class="am-g am-datatable-hd">
+		<div class="am-u-sm-6">
+			<div>
+				<label>显示 <select
+					data-am-selected="{btnWidth:'auto',btnSize:'xs'}"> <#list
+						pageSizes as value> <#if value == data.pageSize>
+						<option value="${value}" selected>${value}</option> <#else>
+						<option value="${value}">${value}</option> </#if> </#list>
+				</select> 项结果
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="am-g">
+		<div class="am-u-sm-12"><#nested></div>
+	</div>
+	<div class="am-g am-datatable-footer">
+		<div class="am-u-sm-5">
+			<div aria-live="polite" role="status" id="exampleTable_info"
+				class="dataTables_info am-datatable-info">显示第
+				${(data.pageNumber - 1) * data.pageSize + 1} 至 ${data.pageNumber *
+				data.pageSize} 项结果，共 ${data.totalRow} 项</div>
+		</div>
+		<div class="am-u-sm-7">
+			<div class="dataTables_paginate paging_simple_numbers">
+				<ul
+					class="am-datatable-pager am-pagination am-pagination-right am-text-sm">
+					<li class="paginate_button previous am-disabled"><a
+						tabindex="0" data-dt-idx="0" aria-controls="exampleTable" href="#">上页</a></li>
+					<#list 1..data.totalPage as page>
+					<li class="paginate_button"><a tabindex="0" data-dt-idx="1"
+						href="#">${page}</a></li> </#list>
+					<li class="paginate_button am-active"><a tabindex="0"
+						data-dt-idx="1" aria-controls="exampleTable" href="#">1</a></li>
+					<li class="paginate_button "><a tabindex="0" data-dt-idx="2"
+						aria-controls="exampleTable" href="#">2</a></li>
+					<li class="paginate_button next"><a tabindex="0"
+						data-dt-idx="3" aria-controls="exampleTable" href="#">下页</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</#macro> <@layout.page>
+<!-- 在这里写正文 -->
+<div class="am-cf am-padding">
+	<div class="am-fl am-cf">
+		<strong class="am-text-primary am-text-lg">菜单管理</strong> /
+	</div>
+	<button type="button" class="am-btn am-btn-primary am-btn-xs am-fr">添加菜单</button>
+</div>
+<hr data-am-widget="divider" style=""
+	class="am-divider am-divider-default am-cf" />
+<@page data=_result_>
+<table
+	class="am-table am-table-striped am-table-bordered am-table-compact">
+	<thead>
+		<tr>
+			<th>Rendering engine</th>
+			<th>Browser</th>
+			<th>Browser</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<#list _result_.list as item>
+		<tr>
+			<td>${item.id}</td>
+			<td>${item.operation_id}</td>
+			<td>${item.role_id}</td>
+			<td></td>
+		</tr>
+		</#list>
+	</tbody>
+</table>
+</@page> </@layout.page>

@@ -8,8 +8,15 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.core.ActionReporter;
+import com.jfinal.core.Const;
+import com.jfinal.ext.route.AutoBindRoutes;
+import com.jfinal.ext2.kit.PageViewKit;
 import com.jfinal.ext2.plugin.druid.DruidEncryptPlugin;
+import com.jfinal.ext2.upload.filerenamepolicy.RandomFileRenamePolicy;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.render.ViewType;
+import com.jfinal.upload.OreillyCos;
 
 /**
  * final的配置类  继承JFinalConfig     
@@ -26,10 +33,21 @@ public class JfiConfig extends JFinalConfig { // JFinalConfigExt{
 	//设置常量类的
 	public void configConstant(Constants me) {   
 		me.setDevMode(true);
+        me.setViewType(ViewType.FREE_MARKER);
+        me.setFreeMarkerViewExtension("html");
+        me.setBaseViewPath("/view");
+        me.setEncoding(Const.DEFAULT_ENCODING);
+        me.setError404View(PageViewKit.getHTMLPageViewFromWebInf("404"));
+        //me.setError500View(PageViewKit.getHTMLPageViewFromWebInf("500"));
+        me.setError403View(PageViewKit.getHTMLPageViewFromWebInf("403"));
+        OreillyCos.setFileRenamePolicy(new RandomFileRenamePolicy());
+        me.setUrlParaSeparator("-");
+        ActionReporter.setReportAfterInvocation(false);
 	}  
 	
 	public void configRoute(Routes me) { 
 		me.add(new FrontRoutes());
+		me.add(new AutoBindRoutes());
 		//me.add(new AdminRoutes());
 	}  
 	
@@ -40,6 +58,10 @@ public class JfiConfig extends JFinalConfig { // JFinalConfigExt{
 		me.add(drp);
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(drp);
 		me.add(arp);
+		
+		//自动绑定表
+		//AutoTableBindPlugin atbp = new AutoTableBindPlugin(drp.getDataSource());
+		//me.add(atbp);
 		
 		//用Generate生成器  根据数据库中的表映射生成对应的model   里面应该会记录model 和 table 的对应关系  待测试
 		//容器对model类的加载  是否已加载到容器中  

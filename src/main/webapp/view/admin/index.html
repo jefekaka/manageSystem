@@ -1,0 +1,12 @@
+<#import "/public/static/layout.html" as layout>
+<#macro javascript>
+<!-- 在这里写javascript -->
+</#macro>
+<#assign javascript = javascript in layout />
+<#macro css>
+<!-- 在这里写css -->
+</#macro>
+<#assign css = css in layout />
+<@layout.page>
+<!-- 在这里写正文 -->
+</@layout.page>

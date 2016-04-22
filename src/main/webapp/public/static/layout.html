@@ -1,0 +1,114 @@
+<#macro JavaScript>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="/public/static/js/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="/public/static/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="/public/static/js/amazeui.min.js"></script>
+<script src="/public/static/js/app.js"></script>
+</#macro>
+<#macro javascript></#macro> <#macro css></#macro> <#macro
+page>
+<!doctype html>
+<html class="no-js">
+<head>
+<title>${title!'页面未命名'} </title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="icon" type="image/png" href="assets/i/favicon.png">
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="apple-touch-icon-precomposed"
+	href="assets/i/app-icon72x72@2x.png">
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage"
+	content="assets/i/app-icon72x72@2x.png">
+<meta name="msapplication-TileColor" content="#0e90d2">
+<link rel="shortcut icon" href="/public/static/images/favicon.png"
+	type="image/png" />
+<link rel="stylesheet" href="/public/static/css/amazeui.min.css">
+<link rel="stylesheet" href="/public/static/css/admin.css">
+<link rel="stylesheet" href="/public/static/css/app.css">
+<@css />
+</head>
+<body>
+	<!--[if lte IE 9]>
+  <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>以获得更好的体验！</p>
+  <![endif]-->
+	<!--在这里编写你的代码-->
+
+	<header class="am-topbar admin-header ">
+		<div class="am-topbar-brand">
+			<a href="/"><strong>J<font color=red>Look</font></strong> 内容管理平台</a>
+		</div>
+		<div id="topbar-collapse" class="am-collapse am-topbar-collapse">
+			<ul class="am-nav am-nav-pills am-topbar-nav am-hide">
+				<li class="am-active"><a href="/">首页</a></li>
+				<li><a href="#">用户</a></li>
+				<li><a href="#">系统</a></li>
+			</ul>
+			<ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right">
+				<li class="am-dropdown" data-am-dropdown=""><a
+					class="am-dropdown-toggle" data-am-dropdown-toggle=""
+					href="javascript:;"> <span class="am-icon-users"></span> 管理员 <span
+						class="am-icon-caret-down"></span>
+				</a>
+					<ul class="am-dropdown-content">
+						<li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+						<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+						<li><a href="/logout"><span class="am-icon-power-off"></span>
+								退出</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</header>
+	<div class="am-cf admin-main">
+		<!-- sidebar start -->
+		<div class="admin-sidebar am-offcanvas">
+			<ul class="am-list admin-sidebar-list" id="collapase-nav">
+				<li class="am-panel"><a href="/"><span class="am-icon-home"></span>
+						首页</a></li>
+				<li class="admin-parent am-panel"><a class="am-cf"
+					data-am-collapse="{parent:'#collapase-nav',target:'#user-nav'}"><span
+						class="am-icon-file"></span> 用户管理 <span
+						class="am-icon-angle-right am-fr am-margin-right"></span></a>
+					<ul class="am-list am-collapse admin-sidebar-sub" id="user-nav">
+						<li><a href="/admin/user" class="am-cf">用户管理</a></li>
+						<li><a href="admin-user.html" class="am-cf">权限系统</a></li>
+						<li><a href="admin-user.html" class="am-cf">行为管理</a></li>
+					</ul></li>
+				<li class="admin-parent am-panel"><a class="am-cf"
+					data-am-collapse="{parent:'#collapase-nav',target:'#system-nav'}"><span
+						class="am-icon-file"></span> 系统管理 <span
+						class="am-icon-angle-right am-fr am-margin-right"></span></a>
+					<ul class="am-list am-collapse admin-sidebar-sub" id="system-nav">
+						<li><a href="admin-user.html" class="am-cf">网站设置</a></li>
+						<li><a href="/admin/menu" class="am-cf">菜单管理</a></li>
+						<li><a href="code-manage.html" class="am-cf">配置管理</a></li>
+					</ul></li>
+				<li class="am-panel"><a href="/logout"><span
+						class="am-icon-sign-out"></span> 注销</a></li>
+			</ul>
+		</div>
+		<!-- sidebar end -->
+		<div class="admin-content"><#nested></div>
+	</div>
+	<@JavaScript /> <@javascript />
+</body>
+</html>
+</#macro>
